@@ -1,0 +1,21 @@
+{
+  "name": "nest-pdf",
+  "private": true,
+  "description": "Monorepo for NestJS PDF",
+  "type": "module",
+  "repository": "https://github.com/jjspscl/nest-pdf.git",
+  "author": "jjspscl <jjspscl@gmail.com>",
+  "license": "MIT",
+  "workspaces": [
+    "lib",
+    "example",
+    "shared"
+  ],
+  "devDependencies": {
+    "turbo": "^2.0.4"
+  },
+  "packageManager": "yarn@1.22.22",
+  "dependencies": {
+    "@changesets/cli": "^2.27.5"
+  }
+}

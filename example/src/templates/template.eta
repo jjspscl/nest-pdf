@@ -1,0 +1,15 @@
+<% /* Boilerplate Header */ %>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>NestJS PDF</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <%~ it.body %>
+</body>

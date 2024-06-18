@@ -18,7 +18,7 @@ export class PDFService {
     const browser = await chromium.launch();
     const context = await browser.newContext();
     const page = await context.newPage();
-    await page.setContent(html, { waitUntil: 'networkidle' });
+    await page.setContent(html, { waitUntil: 'load' });
     const pdf = await page.pdf();
     await browser.close();
     return pdf;

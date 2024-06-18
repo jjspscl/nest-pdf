@@ -1,6 +1,6 @@
 {
   "name": "@jjspscl/nest-pdf",
-  "version": "0.0.3-alpha.2",
+  "version": "0.0.3-alpha.3",
   "description": "NestJS module to generate PDF files using Eta and Playwright",
   "author": "@jjspscl",
   "license": "MIT",

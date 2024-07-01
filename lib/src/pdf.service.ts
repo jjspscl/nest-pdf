@@ -5,6 +5,8 @@ import { chromium } from 'playwright';
 import { PDFOptions } from './pdf.interface';
 import { PDF_OPTIONS } from './pdf.constants';
 
+import * as dto from './pdf.dto';
+
 @Injectable()
 export class PDFService {
   private eta: Eta;
@@ -14,22 +16,28 @@ export class PDFService {
     private readonly pdfOptions: PDFOptions,
   ) {}
 
-  private async create(html: string) {
-    const browser = await chromium.launch();
+  private async create({ html, pdf_options }: dto.dtoPDFCreate) {
+    const browser = await chromium.launch({
+      args: ['--disable-web-security'],
+    });
     const context = await browser.newContext();
     const page = await context.newPage();
-    await page.setContent(html, { waitUntil: 'load' });
-    const pdf = await page.pdf();
+    await page.setContent(html, { waitUntil: 'networkidle' });
+    const pdf = await page.pdf(pdf_options);
     await browser.close();
     return pdf;
   }
 
-  async onModuleInit() {
+  private async onModuleInit() {
     this.eta = new Eta({ views: this.pdfOptions.root });
   }
 
-  async createPDF(template: string, data: object) {
+  async createPDF(
+    template: string,
+    data: object,
+    pdf_options?: dto.dtoPDFOptions,
+  ) {
     const html = this.eta.render(template, data);
-    return this.create(html);
+    return await this.create({ html, pdf_options });
   }
 }

@@ -1,6 +1,7 @@
 import type { pdfFormat } from './pdf.interface';
 
 export interface dtoPDFOptions {
+  displayHeaderFooter?: boolean;
   footerTemplate?: string;
   format?: pdfFormat;
 }
